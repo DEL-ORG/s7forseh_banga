@@ -1,0 +1,13 @@
+agent any
+
+
+agent {
+         label ("Node2")
+}
+
+
+agent {
+    docker {
+        image "docker pull grapeupci/ubuntu-kubectl:1.0.0"
+    }
+}

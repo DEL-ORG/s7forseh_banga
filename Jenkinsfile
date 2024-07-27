@@ -1,15 +1,17 @@
 pipeline {
+agent {
+    docker {
+        image "docker pull grapeupci/ubuntu-kubectl:1.0.0"
+    }
+}
 
-    agent any
-
-
-options {
+    options {
   buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '3', numToKeepStr: '3')
   disableConcurrentBuilds()
   timeout(time: 1, unit: 'HOURS')
   timestamps()
   retry(1)
-}
+   }
 
 
 
@@ -19,6 +21,7 @@ options {
         stage('test') {
             steps {
                 sh  '''
+                kubectl 
                 ls
                 uname -r
                 touch gwen2
